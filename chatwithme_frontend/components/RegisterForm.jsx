@@ -29,7 +29,7 @@ const RegisterForm = () => {
     <>
     {alert && <p>{alert}</p>}
       <form
-        className="bg-green-400 flex flex-col items-center gap-3 h-screen justify-center"
+        className="bg-gray-800 flex flex-col items-center gap-3 h-screen justify-center text-white"
         onSubmit={handleSubmit}
       >
         <div className=" flex flex-col items-center">

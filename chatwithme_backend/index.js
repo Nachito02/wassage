@@ -38,20 +38,24 @@ const io = new Server(server,{
 })
 
 
+
 io.on('connection', (socket) => {
- 
-
-    console.log('conectado a socket io')
-
-    socket.on('open chat', (id) => {
-        socket.join(id)
-    })
-
-    socket.on("new message", (data) => {
-        console.log(data)
-        socket.to(data.chatRoom).emit('new message',data)
-    })
+  console.log('conectado a socket io');
 
 
-    
-})
+
+  socket.on('open chat', (id) => {
+    socket.join(id);
+  });
+
+
+  socket.on('new message', (data) => {
+    socket.to(data.chatRoom).emit('new message', data);
+  });
+
+  
+  socket.on('new chatroom', (data) => {
+    console.log(data)
+   socket.broadcast.emit('new chatroom', data)
+  });
+});

@@ -1,7 +1,6 @@
 import React, { useState,useContext, useEffect } from "react";
 import authContext from "../context/auth/authContext";
 import Link from "next/link";
-import { useRouter } from "next/router";
 const LoginForm = () => {
 
     const AuthContext = useContext(authContext);
@@ -35,14 +34,14 @@ const LoginForm = () => {
     <>
     {alert && <p>{alert}</p>}
       <form
-        className="bg-green-400 flex flex-col items-center gap-3 h-screen justify-center"
+        className="bg-gray-800 text-white flex flex-col items-center gap-3 h-screen justify-center"
         onSubmit={handleSubmit}
       >
 
         <div className=" flex flex-col items-center">
           <label htmlFor="">Your email</label>
           <input
-            className="px-3 py-2"
+            className="px-3 py-2  text-black"
             type="email"
             placeholder="Your Email"
             onChange={(e) => setData({...data, email: e.target.value}) }
@@ -56,7 +55,7 @@ const LoginForm = () => {
           <label htmlFor="">Your password</label>
 
           <input
-            className="px-3 py-2"
+            className="px-3 py-2 text-black"
             type="password"
             placeholder="Your Password"
             name="password"
@@ -67,10 +66,10 @@ const LoginForm = () => {
         </div>
 
         <button type="submit" className="bg-green-600 px-10 py-2">
-          Register
+          Login
         </button>
 
-      <Link href="/register">Create account</Link>
+      <Link href="/">Register</Link>
 
       </form>
 
