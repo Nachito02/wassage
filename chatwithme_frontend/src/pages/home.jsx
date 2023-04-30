@@ -78,15 +78,12 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    socket = io("http://localhost:3001");
+    socket = io(process.env.BACKEND_URL);
     socket.emit("open chat", selectChatRoom);
   }, [selectChatRoom]);
 
   useEffect(() => {
-
-    
     socket.on("new message", (id) => {
-     
       setMessages([...messages, id])
     });
 
