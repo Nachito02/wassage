@@ -123,23 +123,28 @@ const Home = () => {
 
   const handleUserClick = async (id) => {
     try {
+      setLoading(true)
       const response = await clienteAxios.get(
         `/api/users/chatroom/showchatroom/${id}`
       );
 
       const chatrooms = await clienteAxios("/api/users/chatroom/getChatrooms");
       setChatRoom(chatrooms.data);
+      
       setSelectChatroom(response.data._id);
       setShowSearch(false);
 
+
       setInput({
         ...input,
-        chatRoomId: chatrooms.data[0]._id,
-        recipient: chatrooms.data[0].recipient._id,
+        chatRoomId: response.data._id,
+        recipient: response.data.users[1],
       });
+      console.log(response.data)
 
-        console.log(input)
       socket.emit("new chatroom", chatrooms.data);
+      setLoading(false)
+
     } catch (error) {
       console.log(error);
     }
@@ -183,7 +188,7 @@ const Home = () => {
               }`}
                 key={room._id}
                 onClick={() => {
-                  
+
                   setSelectChatroom(room._id);
                   setInput({
                     ...input,
