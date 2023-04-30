@@ -78,7 +78,7 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    socket = io(process.env.BACKEND_URL);
+    socket = io(process.env.NEXT_PUBLIC_BACKEND_URL);
     socket.emit("open chat", selectChatRoom);
   }, [selectChatRoom]);
 
