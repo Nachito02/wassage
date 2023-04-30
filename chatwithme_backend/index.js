@@ -42,8 +42,6 @@ const io = new Server(server,{
 io.on('connection', (socket) => {
   console.log('conectado a socket io');
 
-
-
   socket.on('open chat', (id) => {
     socket.join(id);
   });
@@ -55,7 +53,6 @@ io.on('connection', (socket) => {
 
   
   socket.on('new chatroom', (data) => {
-    console.log(data)
    socket.broadcast.emit('new chatroom', data)
   });
 });
