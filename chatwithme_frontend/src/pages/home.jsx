@@ -12,6 +12,8 @@ import { ClipLoader } from "react-spinners";
 import Chat from "../../components/Chat";
 import io from "socket.io-client";
 import { useRouter } from "next/router";
+import dotenv from 'dotenv';
+dotenv.config();
 let socket;
 
 const Home = () => {
